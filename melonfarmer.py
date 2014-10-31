@@ -1,5 +1,4 @@
 import json, os, time
-from pprint import pprint as pp
 
 import requests
 from bs4 import BeautifulSoup
@@ -25,8 +24,7 @@ class MelonFarmer:
         r = requests.post(
             url,
             data=json.dumps(payload),
-            headers=headers,
-            #auth=('chris', 'plugh')
+            headers=headers
         )
         if r.status_code == 200:
             return r
