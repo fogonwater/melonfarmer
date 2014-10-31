@@ -1,4 +1,4 @@
-melonfarmer
+## melonfarmer
 ===========
 
-Simple utilities for harvesting metadata.
+Simple utilities that I seem to use all the time when harvesting metadata.
