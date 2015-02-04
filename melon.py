@@ -3,7 +3,7 @@ import json, os, time
 import requests
 from bs4 import BeautifulSoup
 
-class MelonFarmer:
+class Farmer:
     def __init__(self):
         self.sleep_dur = 1
 
@@ -11,6 +11,7 @@ class MelonFarmer:
         with open(f_path, 'r') as infile:
             self.documents = json.load(infile)
         print 'Read %s.' % (f_path)
+        return self.documents
 
     def get(self, url):
         print url
