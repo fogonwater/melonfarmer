@@ -7,12 +7,6 @@ class Farmer:
     def __init__(self):
         self.sleep_dur = 1
 
-    def read_json(self, f_path):
-        with open(f_path, 'r') as infile:
-            self.documents = json.load(infile)
-        print 'Read %s.' % (f_path)
-        return self.documents
-
     def get(self, url):
         print url
         r = requests.get(url)
@@ -31,11 +25,16 @@ class Farmer:
             return r
         else:
             print 'Error: %s.' % r.status_code
-            return
 
-    def write_json(self, js, dst_path, quiet=True):
+    def read_json(self, f_path):
+        with open(f_path, 'r') as infile:
+            self.documents = json.load(infile)
+        print 'Read %s.' % (f_path)
+        return self.documents
+
+    def write_json(self, d, dst_path, quiet=True):
         with open(dst_path, 'w') as outfile:
-            json.dump(js, outfile, indent=2)
+            json.dump(d, outfile, indent=2)
         if not quiet:
             print dst_path, 'written.'
 
