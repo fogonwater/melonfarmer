@@ -6,13 +6,23 @@ from bs4 import BeautifulSoup
 class Farmer:
     def __init__(self):
         self.sleep_dur = 1
+        self.verbose = False
 
     def get(self, url):
-        print url
+        if self.verbose:
+            print('Fetching: {}'.format(url))
         r = requests.get(url)
         if r.status_code != 200:
-            print 'Error: %s.' % r.status_code
+            print('Error: {}.'.format(r.status_code))
         return r
+
+    def get_json(self, url):
+        if self.verbose:
+            print('Fetching: {}'.format(url))
+        r = requests.get(url)
+        if r.status_code != 200:
+            print('Error: {}.'.format(r.status_code))
+        return r.json()
 
     def post_json(self, payload, url):
         headers = {'content-type': 'application/json'}
@@ -21,35 +31,37 @@ class Farmer:
             data=json.dumps(payload),
             headers=headers
         )
-        if r.status_code == 200:
+        if r.status_code in [200, 201, 202]:
+            if self.verbose:
+                print('Status: {}.'.format(r.status_code))
             return r
         else:
-            print 'Error: %s.' % r.status_code
+            print('Error: {}.'.format(r.status_code))
 
     def read_json(self, f_path):
         with open(f_path, 'r') as infile:
             self.documents = json.load(infile)
-        print 'Read %s.' % (f_path)
+        print('Read {}.'.format(f_path))
         return self.documents
 
-    def write_json(self, d, dst_path, quiet=True):
+    def write_json(self, data, dst_path):
         with open(dst_path, 'w') as outfile:
-            json.dump(d, outfile, indent=2)
-        if not quiet:
+            json.dump(data, outfile, indent=2)
+        if self.verbose:
             print dst_path, 'written.'
 
-    def get_json_filenames(self, f_dir):
+    def get_filenames(self, f_dir, suffix=''):
         f_names = []
         for r,d,files in os.walk(f_dir):
             for f in files:
-                if f.endswith('.json'):
+                if f.endswith(suffix):
                     f_names.append('%s/%s' % (r, f))
         return f_names
 
-    def file_exists(self, fname, quiet=True):
+    def file_exists(self, fname):
         if os.path.isfile(fname):
-            if not quiet:
-                print '\n * Skipping record %s exists...\n' % (fname)
+            if self.verbose:
+                print(' * Skipping record {} exists...'.format(fname))
             return True
         return False
 
