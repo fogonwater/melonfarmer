@@ -4,7 +4,6 @@ import requests
 
 class Farmer:
     def __init__(self):
-        self.sleep_dur = 1
         self.verbose = False
 
     def get(self, url):
@@ -69,7 +68,3 @@ class Farmer:
                 print(' * Skipping record {} exists...'.format(fname))
             return True
         return False
-
-    def sleep(self, backoff=False):
-        # TODO - write a backoff function
-        time.sleep(self.sleep_dur)
