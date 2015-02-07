@@ -29,12 +29,12 @@ farmer.write_json({'foo' : 'bar'}, 'data/test2.json')
 d2 = farmer.read_json('data/test2.json')
 ```
 
-Post json to a webservice
+Post json to a webservice.
 ```
 farmer.post_json({'foo' : 'bar'}, 'http://example.com')
 ```
 
-Load CSV as a list of dictionaries
+Load CSV as a list of dictionaries.
 ```
 d3 = farmer.read_csv('data/test.csv')
 ```

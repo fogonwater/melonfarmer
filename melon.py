@@ -50,11 +50,9 @@ class Farmer:
             print dst_path, 'written.'
 
     def read_csv(self, f_path):
-        rows = []
         with open(f_path) as f:
             reader = csv.DictReader(f)
-            for row in reader:
-                rows.append(row)
+            rows = [ row for row in reader]
         return rows
 
     def get_filenames(self, f_dir, suffix=''):
