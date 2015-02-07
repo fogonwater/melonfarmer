@@ -34,6 +34,11 @@ Post json to a webservice
 farmer.post_json({'foo' : 'bar'}, 'http://example.com')
 ```
 
+Load CSV as a list of dictionaries
+```
+d3 = farmer.read_csv('data/test.csv')
+```
+
 Get a list of filenames of a particular type.
 ```
 json_files = farmer.get_filenames('data', suffix='.json')

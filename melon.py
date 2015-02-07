@@ -1,7 +1,6 @@
-import json, os, time
+import csv, json, os, time
 
 import requests
-from bs4 import BeautifulSoup
 
 class Farmer:
     def __init__(self):
@@ -49,6 +48,14 @@ class Farmer:
             json.dump(data, outfile, indent=2)
         if self.verbose:
             print dst_path, 'written.'
+
+    def read_csv(self, f_path):
+        rows = []
+        with open(f_path) as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                rows.append(row)
+        return rows
 
     def get_filenames(self, f_dir, suffix=''):
         f_names = []
