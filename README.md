@@ -39,7 +39,7 @@ Load CSV as a list of dictionaries.
 d3 = farmer.read_csv('data/test.csv')
 ```
 
-Get a list of filenames of a particular type.
+Get a list of all .json files in a directory called 'data'.
 ```
 json_files = farmer.get_filenames('data', suffix='.json')
 print(json_files)
