@@ -39,20 +39,28 @@ class Farmer:
     def read_json(self, f_path):
         with open(f_path, 'r') as infile:
             self.documents = json.load(infile)
-        print('Read {}.'.format(f_path))
+        if self.verbose:
+            print('Read {}.'.format(f_path))
         return self.documents
 
-    def write_json(self, data, dst_path):
-        with open(dst_path, 'w') as outfile:
+    def write_json(self, data, f_path):
+        with open(f_path, 'w') as outfile:
             json.dump(data, outfile, indent=2)
         if self.verbose:
-            print dst_path, 'written.'
+            print f_path, 'written.'
 
     def read_csv(self, f_path):
         with open(f_path) as f:
             reader = csv.DictReader(f)
             rows = [ row for row in reader]
         return rows
+
+    def list_to_csv(self, data, f_path):
+        with open(f_path, 'wb') as f:
+            writer = csv.writer(f)
+            writer.writerows(data)
+        if self.verbose:
+            print('Wrote {}.'.format(f_path))
 
     def get_filenames(self, f_dir, suffix=''):
         f_names = []

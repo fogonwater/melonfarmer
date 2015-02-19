@@ -34,6 +34,14 @@ Post json to a webservice.
 farmer.post_json({'foo' : 'bar'}, 'http://example.com')
 ```
 
+Write a list of lists to a CSV file.
+```
+report = [['a', 'b', 'c']]
+for num in range(6):
+    report.append([randint(0,9), randint(0,9), randint(0,9)])
+farmer.list_to_csv(report,'data/test.csv')
+```
+
 Load CSV as a list of dictionaries.
 ```
 d3 = farmer.read_csv('data/test.csv')
