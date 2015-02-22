@@ -36,9 +36,12 @@ farmer.post_json({'foo' : 'bar'}, 'http://example.com')
 
 Write a list of lists to a CSV file.
 ```
-report = [['a', 'b', 'c']]
-for num in range(6):
-    report.append([randint(0,9), randint(0,9), randint(0,9)])
+report = [
+    ['col_a', 'col_b', 'col_c'],
+    [1, 'melon', 'yes'],
+    [9, 'apple', 'no'],
+    [4, 'melon', 'maybe']
+]
 farmer.list_to_csv(report,'data/test.csv')
 ```
 
