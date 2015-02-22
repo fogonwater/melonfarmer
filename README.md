@@ -3,6 +3,7 @@
 
 Simple utilities that I seem to use all the time when harvesting metadata.
 
+Import the module and create a farmer.
 
 ```
 import melon
@@ -56,8 +57,9 @@ json_files = farmer.get_filenames('data', suffix='.json')
 print(json_files)
 ```
 
-Check to see whether files exist.
+Check to see whether specific files exist.
 ```
+json_files = farmer.get_filenames('data', suffix='.json')
 json_files.append('red_herring.json')
 for f_name in json_files:
     if farmer.file_exists(f_name):
