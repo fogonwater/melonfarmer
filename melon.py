@@ -49,9 +49,12 @@ class Farmer:
         if self.verbose:
             print f_path, 'written.'
 
-    def read_csv(self, f_path):
+    def read_csv(self, f_path, fieldnames=[]):
         with open(f_path) as f:
-            reader = csv.DictReader(f)
+            if not fieldnames:
+                reader = csv.DictReader(f)
+            else:
+                reader = csv.DictReader(f, fieldnames=fieldnames)
             rows = [ row for row in reader]
         return rows
 
