@@ -1,6 +1,11 @@
 import csv, json, os, time
-
 import requests
+
+def set_default(obj):
+    if isinstance(obj, set):
+        return list(obj)
+    raise TypeError
+
 
 class Farmer:
     def __init__(self):
@@ -45,7 +50,7 @@ class Farmer:
 
     def write_json(self, data, f_path):
         with open(f_path, 'w') as outfile:
-            json.dump(data, outfile, indent=2)
+            json.dump(data, outfile, indent=2, default=set_default)
         if self.verbose:
             print f_path, 'written.'
 
