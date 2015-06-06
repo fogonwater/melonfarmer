@@ -57,7 +57,8 @@ class Farmer:
                 outfile,
                 indent=2,
                 default=set_default,
-                ensure_ascii=ensure_ascii
+                ensure_ascii=ensure_ascii,
+                sort_keys=True
             )
         if self.verbose:
             print f_path, 'written.'
