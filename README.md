@@ -30,6 +30,11 @@ farmer.write_json({'foo' : 'bar'}, 'data/test2.json')
 d2 = farmer.read_json('data/test2.json')
 ```
 
+Write JSON without `ensure_ascii` for lazily working with fiddly unicode formats.
+```
+farmer.write_json(d1, 'data/test3.json', ensure_ascii=False)
+```
+
 Post json to a webservice.
 ```
 farmer.post_json({'foo' : 'bar'}, 'http://example.com')
