@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import csv, json, os, time
 import requests
 
@@ -48,9 +50,15 @@ class Farmer:
             print('Read {}.'.format(f_path))
         return self.documents
 
-    def write_json(self, data, f_path):
+    def write_json(self, data, f_path, ensure_ascii=True):
         with open(f_path, 'w') as outfile:
-            json.dump(data, outfile, indent=2, default=set_default)
+            json.dump(
+                data,
+                outfile,
+                indent=2,
+                default=set_default,
+                ensure_ascii=ensure_ascii
+            )
         if self.verbose:
             print f_path, 'written.'
 
@@ -81,6 +89,6 @@ class Farmer:
     def file_exists(self, fname):
         if os.path.isfile(fname):
             if self.verbose:
-                print(' * Skipping record {} exists...'.format(fname))
+                print(' * Skipping item {} exists...'.format(fname))
             return True
         return False
