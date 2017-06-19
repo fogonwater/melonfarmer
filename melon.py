@@ -19,7 +19,7 @@ def get_filenames(f_dir, prefix='', suffix=''):
     f_names = []
     for r,d,files in os.walk(f_dir):
         for f in files:
-            if f.startswith(suffix) and f.endswith(suffix):
+            if f.startswith(prefix) and f.endswith(suffix):
                 f_names.append('{}/{}'.format(r, f))
     return f_names
 
