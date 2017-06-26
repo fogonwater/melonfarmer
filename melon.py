@@ -64,6 +64,10 @@ def write_json(data, f_path):
         )
     print('{} written.'.format(f_path))
 
+def write_text(data, f_path):
+    with open(f_path, 'w') as f:
+        f.write(data.encode('utf8'))
+
 def list_to_csv(data, f_path):
     with open(f_path, 'wb') as f:
         writer = csv.writer(f)
