@@ -6,16 +6,10 @@ Simple utilities that I seem to use all the time when harvesting metadata.
 Import the module and create a farmer.
 
 ```
-import melon
-farmer = melon.Farmer()
+import melon as farmer
 ```
 
 ### Some example uses.
-
-Get more console messages.
-```
-farmer.verbose = True
-```
 
 Get some json and write to a file.
 ```
