@@ -1,9 +1,15 @@
-## melon.farmer()
+## melon (farmer)
 ---
 
-Simple utilities that I seem to use all the time when harvesting metadata.
+Simple utilities for harvesting data + reading and writing files.
 
-Import the module and create a farmer.
+Import just what you need...
+
+```
+from melon import read_json, list_to_csv
+```
+
+... or [import melon as farmer](https://www.youtube.com/watch?v=PwN3SoWSUrY) for LOLS.
 
 ```
 import melon as farmer
