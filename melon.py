@@ -36,7 +36,7 @@ def get_json(url, verbose=True):
         print('Error: {}.'.format(r.status_code))
     return r.json()
 
-def read_csv(f_path, fieldnames=[], strip_header=False):
+def read_csv(f_path, fieldnames=[], strip_header=False, skip_rows=0):
     with open(f_path) as f:
         # optionally strip whitespace from header values (e.g. '  depth' -> 'depth')
         if not fieldnames and strip_header:
@@ -45,6 +45,9 @@ def read_csv(f_path, fieldnames=[], strip_header=False):
             reader = csv.DictReader(f)
         else:
             reader = csv.DictReader(f, fieldnames=fieldnames)
+        # Optionall skip n rows. Useful in combination with fieldnames
+        for n in range(skip_rows):
+            next(reader)
         rows = [ row for row in reader ]
     return rows
 
