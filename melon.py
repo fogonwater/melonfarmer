@@ -40,7 +40,7 @@ def read_csv(f_path, fieldnames=[], strip_header=False, skip_rows=0):
     with open(f_path) as f:
         # optionally strip whitespace from header values (e.g. '  depth' -> 'depth')
         if not fieldnames and strip_header:
-            fieldnames = [h.strip() for h in f.next().split(',')]
+            fieldnames = [h.strip() for h in f.readline().split(',')]
         if not fieldnames:
             reader = csv.DictReader(f)
         else:
