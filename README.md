@@ -30,14 +30,18 @@ farmer.write_json({'foo' : 'bar'}, 'data/test2.json')
 d2 = farmer.read_json('data/test2.json')
 ```
 
-Write JSON without `ensure_ascii` for lazily working with fiddly unicode formats.
-```
-farmer.write_json(d1, 'data/test3.json', ensure_ascii=False)
-```
-
 Post json to a webservice.
 ```
 farmer.post_json({'foo' : 'bar'}, 'http://example.com')
+```
+
+Write a list of dictionaries to a CSV file. (Assumes all dicts have identical keys.)
+```
+report = [
+    {'num':0,'day':'Mon'}, 
+    {'num':1,'day':'Tue'}
+]
+farmer.dict_to_csv(report,'data/test1.csv')
 ```
 
 Write a list of lists to a CSV file.
@@ -48,12 +52,12 @@ report = [
     [9, 'apple', 'no'],
     [4, 'melon', 'maybe']
 ]
-farmer.list_to_csv(report,'data/test.csv')
+farmer.list_to_csv(report,'data/test2.csv')
 ```
 
 Load CSV as a list of dictionaries.
 ```
-d3 = farmer.read_csv('data/test.csv')
+rows = farmer.read_csv('data/test2.csv')
 ```
 
 Get a list of all .json files in a directory called 'data'.
