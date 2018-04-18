@@ -9,7 +9,7 @@ Import just what you need...
 from melon import read_json, list_to_csv
 ```
 
-... or [import melon as farmer](https://www.youtube.com/watch?v=PwN3SoWSUrY) for LOLS.
+... or [import melon as farmer](https://www.youtube.com/watch?v=PwN3SoWSUrY) if that's how you roll.
 
 ```
 import melon as farmer
