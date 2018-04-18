@@ -75,6 +75,13 @@ def write_text(data, f_path):
             f.write(data)
     print('Wrote {}.'.format(f_path))
 
+def dict_to_csv(data, f_path):
+    with open(f_path, 'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, data[0].keys())
+        dict_writer.writeheader()
+        dict_writer.writerows(data)
+    print('Wrote {} with {} rows.'.format(f_path, len(data)))
+    
 def list_to_csv(data, f_path):
     with open(f_path, 'w') as f:
         writer = csv.writer(f)
