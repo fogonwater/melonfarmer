@@ -36,6 +36,12 @@ def get_json(url, verbose=True):
         print('Error: {}.'.format(r.status_code))
     return r.json()
 
+def read_textfile(f_path):
+    """ Open a textfile and return contents as a stripped list."""
+    with open(f_path) as f:
+        rows = f.readlines()
+    return [row.strip() for row in rows]
+
 def read_csv(f_path, fieldnames=[], strip_header=False, skip_rows=0):
     with open(f_path) as f:
         # optionally strip whitespace from header values (e.g. '  depth' -> 'depth')
