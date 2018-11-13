@@ -65,12 +65,7 @@ def read_json(f_path):
 
 def write_json(data, f_path):
     with open(f_path, 'w') as outfile:
-        json.dump(
-            data,
-            outfile,
-            indent=2,
-            sort_keys=True
-        )
+        json.dump(data, outfile, indent=2, sort_keys=True)
     print('{} written.'.format(f_path))
 
 def write_text(data, f_path):
