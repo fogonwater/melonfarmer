@@ -28,10 +28,11 @@ def file_exists(f_path):
         return True
     return False
 
-def get_json(url, verbose=True):
+def get_json(url, payload=None, verbose=True):
+    ''' Get JSON from an online service with optimal URL parameters. '''
+    r = requests.get(url, params=payload)
     if verbose:
-        print('Fetching: {}'.format(url))
-    r = requests.get(url)
+        print('Fetched: {}'.format(r.url))
     if r.status_code != 200:
         print('Error: {}.'.format(r.status_code))
     return r.json()
