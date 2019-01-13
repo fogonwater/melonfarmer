@@ -16,6 +16,7 @@ def touch(f_path='index.html', times=None):
         os.utime(f_path, times)
 
 def get_filenames(f_dir, prefix='', suffix=''):
+    """Get list of filenames within a directory. Optionally scope by prefix/suffix."""
     f_names = []
     for r,d,files in os.walk(f_dir):
         for f in files:
@@ -29,7 +30,7 @@ def file_exists(f_path):
     return False
 
 def get_json(url, payload=None, verbose=True):
-    ''' Get JSON from an online service with optimal URL parameters. '''
+    """ Get JSON from an online service with optimal URL parameters. """
     r = requests.get(url, params=payload)
     if verbose:
         print('Fetched: {}'.format(r.url))
