@@ -68,9 +68,7 @@ def read_csv(f_path, fieldnames=[], strip_header=False):
 
 
 def parse_one_line_csv(s):
-    """ Parses one-line CSV-like strings to list
-    e.g: 'value1,"oh look, an embedded comma",value3'
-    """
+    """ Parses one-line CSV-like strings to a list"""
     file_like_obj = StringIO(s)
     reader = csv.reader(file_like_obj)
     rows = [row for row in reader]

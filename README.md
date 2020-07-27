@@ -30,9 +30,10 @@ farmer.write_json({'foo' : 'bar'}, 'data/test2.json')
 d2 = farmer.read_json('data/test2.json')
 ```
 
-Post json to a webservice.
+Parse a one-line csv-like string
 ```
-farmer.post_json({'foo' : 'bar'}, 'http://example.com')
+s = 'value1,"oh look, an embedded comma",value3'
+print(farmer.parse_one_line_csv(s))
 ```
 
 Write a list of dictionaries to a CSV file. (Assumes all dicts have identical keys.)
