@@ -54,6 +54,7 @@ def read_textfile(f_path):
     return [row.strip() for row in rows]
 
 
+'''
 def read_csv(f_path, fieldnames=[], strip_header=False):
     with open(f_path) as f:
         # optionally strip whitespace from header values (e.g. '  depth' -> 'depth')
@@ -63,6 +64,14 @@ def read_csv(f_path, fieldnames=[], strip_header=False):
             reader = csv.DictReader(f)
         else:
             reader = csv.DictReader(f, fieldnames=fieldnames)
+        rows = [row for row in reader]
+    return rows
+'''
+
+
+def read_csv(f_path):
+    with open(f_path) as f:
+        reader = csv.DictReader(f)
         rows = [row for row in reader]
     return rows
 
